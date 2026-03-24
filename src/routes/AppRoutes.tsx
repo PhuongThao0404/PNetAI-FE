@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { LoginPage, useAuth } from '../features/auth';
+import { LoginPage, SignUpPage, useAuth } from '../features/auth';
 import { LandingPage } from '../features/landing/LandingPage';
 import Navbar from '../components/common/Navbar';
 import { Footer } from '../components/common/Footer';
@@ -25,6 +25,11 @@ export const AppRoutes: React.FC = () => {
           <Route 
             path="/login" 
             element={isAuthenticated ? <Navigate to="/" replace /> : <LoginPage />} 
+          />
+
+          <Route 
+            path="/signup" 
+            element={isAuthenticated ? <Navigate to="/" replace /> : <SignUpPage />} 
           />
 
           {/* Home/Landing Page Route */}

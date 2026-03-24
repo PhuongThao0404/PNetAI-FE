@@ -49,6 +49,7 @@ const Navbar: React.FC = () => {
           Log In
         </button>
         <button 
+          onClick={() => navigate('/signup')}
           className="font-sans text-[13px] font-bold text-white px-[22px] py-[10px] bg-forest rounded-full hover:bg-brown hover:-translate-y-px transition-all duration-300 shadow-sm"
         >
           Sign Up
