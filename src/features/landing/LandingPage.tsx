@@ -33,10 +33,6 @@ export const LandingPage: React.FC = () => {
       <div className={activePage === 'product' ? 'block' : 'hidden'}>
         <ProductDetail />
       </div>
-
-      <div className={activePage === 'product' ? 'block' : 'hidden'}>
-        <ProductDetail />
-      </div>
     </div>
   );
 };
