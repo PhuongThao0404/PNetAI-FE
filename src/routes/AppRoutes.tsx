@@ -1,6 +1,13 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { LoginPage, SignUpPage, useAuth } from '../features/auth';
+import { 
+  LoginPage, 
+  SignUpPage, 
+  ForgotPasswordPage, 
+  OtpVerifyPage, 
+  ResetPasswordPage, 
+  useAuth 
+} from '../features/auth';
 import { LandingPage } from '../features/landing/LandingPage';
 import Navbar from '../components/common/Navbar';
 import { Footer } from '../components/common/Footer';
@@ -30,6 +37,21 @@ export const AppRoutes: React.FC = () => {
           <Route 
             path="/signup" 
             element={isAuthenticated ? <Navigate to="/" replace /> : <SignUpPage />} 
+          />
+
+          <Route 
+            path="/forgot-password" 
+            element={isAuthenticated ? <Navigate to="/" replace /> : <ForgotPasswordPage />} 
+          />
+
+          <Route 
+            path="/otp-verify" 
+            element={isAuthenticated ? <Navigate to="/" replace /> : <OtpVerifyPage />} 
+          />
+
+          <Route 
+            path="/reset-password" 
+            element={isAuthenticated ? <Navigate to="/" replace /> : <ResetPasswordPage />} 
           />
 
           {/* Home/Landing Page Route */}
