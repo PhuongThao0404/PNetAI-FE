@@ -5,8 +5,8 @@ import { ORDERS } from '../data/mockData';
 
 export const RecentOrders: React.FC = () => {
   return (
-    <div className="bg-white rounded-[24px] border border-sand overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ink/5 transition-all">
-      <div className="p-6 px-8 flex items-center justify-between border-b border-sand/50">
+    <div className="bg-white rounded-[24px] border border-sand overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ink/5 transition-all h-[480px] flex flex-col">
+      <div className="p-6 px-8 flex items-center justify-between border-b border-sand/50 flex-shrink-0">
         <h3 className="font-serif text-[18px] font-bold text-ink tracking-tight flex items-center gap-2">
           <ShoppingBag className="w-5 h-5 text-brown/80" />
           Recent Orders
@@ -16,7 +16,7 @@ export const RecentOrders: React.FC = () => {
         </button>
       </div>
 
-      <div className="p-6 px-8">
+      <div className="p-6 px-8 flex-1 overflow-y-auto custom-scrollbar">
         <div className="space-y-4">
           {ORDERS.map((order) => (
             <div 

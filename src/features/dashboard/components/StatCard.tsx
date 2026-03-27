@@ -19,7 +19,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   return (
     <motion.div 
       whileHover={{ y: -4 }}
-      className={`relative overflow-hidden p-6 rounded-[22px] border transition-all ${
+      className={`relative overflow-hidden p-7 rounded-[22px] border transition-all ${
         isAccent 
           ? 'bg-brown border-brown shadow-xl shadow-brown/15' 
           : 'bg-white border-sand shadow-sm hover:shadow-xl hover:shadow-ink/10'
@@ -35,7 +35,7 @@ export const StatCard: React.FC<StatCardProps> = ({
           {label}
         </span>
         
-        <div className={`font-serif text-[34px] font-bold leading-none mb-2 tracking-tight ${isAccent ? 'text-white' : 'text-ink'}`}>
+        <div className={`font-serif text-[40px] font-bold leading-none mb-2 tracking-tight ${isAccent ? 'text-white' : 'text-ink'}`}>
           {value}
         </div>
 
