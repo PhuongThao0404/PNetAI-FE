@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-
-const SIZES = ['4kg', '10kg', '15kg'];
-const TYPES = ['Large Breed', 'Medium Breed', 'Small Breed'];
-const THUMBS = ['🐕', '📦', '✨', '📋'];
+import { PRODUCT_DETAIL_MOCK } from '../data/mockData';
 
 export const ProductDetail: React.FC = () => {
+  const data = PRODUCT_DETAIL_MOCK;
   const [qty, setQty] = useState(1);
-  const [selectedSize, setSelectedSize] = useState('15kg');
-  const [selectedType, setSelectedType] = useState('Large Breed');
-  const [activeThumb, setActiveThumb] = useState('🐕');
+  const [selectedSize, setSelectedSize] = useState(data.sizes[2]);
+  const [selectedType, setSelectedType] = useState(data.types[0]);
+  const [activeThumb, setActiveThumb] = useState(data.thumbs[0]);
 
   return (
     <section className="py-32 px-12 lg:px-24">
@@ -30,7 +28,7 @@ export const ProductDetail: React.FC = () => {
             {activeThumb}
           </div>
           <div className="flex gap-4">
-            {THUMBS.map((t, idx) => (
+            {data.thumbs.map((t, idx) => (
               <div
                 key={idx}
                 onClick={() => setActiveThumb(t)}
@@ -46,36 +44,36 @@ export const ProductDetail: React.FC = () => {
         {/* Info */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-[12px] uppercase tracking-widest text-muted">Premium Food</span>
+            <span className="text-[12px] uppercase tracking-widest text-muted">{data.category}</span>
             <span className="bg-forest text-white text-[11px] px-3 py-1 rounded-full font-bold">Authentic</span>
           </div>
           
           <h1 className="text-4xl lg:text-6xl font-serif font-bold text-ink leading-tight mb-4">
-            Royal Canin Maxi Adult
+            {data.name}
           </h1>
 
           <div className="flex items-center gap-2.5 mb-8">
-            <span className="text-caramel text-lg">★★★★★</span>
-            <span className="text-[13px] text-muted">4.9 — 238 reviews</span>
+            <span className="text-caramel text-lg">{data.stars}</span>
+            <span className="text-[13px] text-muted">{data.reviews}</span>
           </div>
 
           <div className="mb-10">
             <div className="flex items-center gap-4">
-              <span className="text-4xl lg:text-5xl font-serif font-bold text-brown">890,000đ</span>
-              <span className="text-2xl text-muted line-through opacity-60 font-serif">1,100,000đ</span>
+              <span className="text-4xl lg:text-5xl font-serif font-bold text-brown">{data.price}</span>
+              <span className="text-2xl text-muted line-through opacity-60 font-serif">{data.oldPrice}</span>
             </div>
-            <div className="text-forest text-[13px] font-semibold mt-2">✓ Save 210,000đ (19%)</div>
+            <div className="text-forest text-[13px] font-semibold mt-2">✓ Save $10.00 (19%)</div>
           </div>
 
           <p className="border-t border-sand pt-8 text-muted text-[15px] leading-relaxed font-light mb-10">
-            Premium dry food for large adult dogs from 15 months to 5 years old. Specially formulated to support joint health and maintain ideal weight. Rich in high-quality, easy-to-digest protein.
+            {data.description}
           </p>
 
           <div className="space-y-8 mb-10">
             <div>
               <div className="text-[13px] font-bold text-ink mb-3 uppercase tracking-wider">Weight: <span className="text-caramel">{selectedSize}</span></div>
               <div className="flex flex-wrap gap-2">
-                {SIZES.map(s => (
+                {data.sizes.map(s => (
                   <button
                     key={s}
                     onClick={() => setSelectedSize(s)}
@@ -91,7 +89,7 @@ export const ProductDetail: React.FC = () => {
             <div>
               <div className="text-[13px] font-bold text-ink mb-3 uppercase tracking-wider">Breed Type: <span className="text-caramel">{selectedType}</span></div>
               <div className="flex flex-wrap gap-2">
-                {TYPES.map(t => (
+                {data.types.map(t => (
                   <button
                     key={t}
                     onClick={() => setSelectedType(t)}
@@ -126,15 +124,11 @@ export const ProductDetail: React.FC = () => {
           </div>
 
           <div className="border-t border-sand pt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-center gap-2 text-[12px] text-muted">
-              <span className="text-xl">🚚</span> Free shipping from 300k
-            </div>
-            <div className="flex items-center gap-2 text-[12px] text-muted">
-              <span className="text-xl">↩️</span> 30-day returns
-            </div>
-            <div className="flex items-center gap-2 text-[12px] text-muted">
-              <span className="text-xl">✓</span> Authentic item
-            </div>
+            {data.features.map((f, i) => (
+              <div key={i} className="flex items-center gap-2 text-[12px] text-muted">
+                <span className="text-xl">{f.icon}</span> {f.text}
+              </div>
+            ))}
           </div>
         </div>
       </div>
