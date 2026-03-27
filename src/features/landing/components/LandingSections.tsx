@@ -5,7 +5,9 @@ import {
   PRODUCTS, 
   SPA_SERVICES, 
   REVIEWS,
-  TIME_SLOTS
+  TIME_SLOTS,
+  SPA_FORM_OPTIONS,
+  MOCK_BOOKING_PETS
 } from '../data/mockData';
 
 // --- ServicesStrip Component ---
@@ -96,7 +98,7 @@ export const FeaturedProducts: React.FC<{ onProductClick?: (id: number) => void 
               )}
             </div>
             <div className="p-6">
-              <div className="text-[11px] uppercase tracking-widest text-muted mb-1.5">{product.category === 'Thức ăn cao cấp' ? 'Premium Food' : product.category === 'Phụ kiện dạo chơi' ? 'Outdoor Accessories' : product.category === 'Đồ chơi mèo' ? 'Cat Toys' : product.category === 'Nhà & Giường ngủ' ? 'Homes & Beds' : 'Hygiene & Care'}</div>
+              <div className="text-[11px] uppercase tracking-widest text-muted mb-1.5">{product.category}</div>
               <div className="text-caramel text-xs mb-2">{product.stars}</div>
               <h3 className="text-xl font-serif font-bold text-ink leading-tight mb-2">{product.name}</h3>
               <div className="flex items-center justify-between mt-4">
@@ -154,17 +156,18 @@ export const SpaBooking: React.FC = () => {
           <div>
             <label className="block text-[11px] opacity-60 uppercase tracking-widest mb-2">Service</label>
             <select className="w-full bg-white/10 border border-white/15 text-white p-3 rounded-xl outline-none focus:border-caramel transition-colors appearance-none">
-              <option className="text-ink">Basic Bath</option>
-              <option className="text-ink">Grooming</option>
-              <option className="text-ink">Full Spa Package</option>
+              {SPA_FORM_OPTIONS.map(opt => (
+                <option key={opt.id} value={opt.id} className="text-ink">{opt.label}</option>
+              ))}
             </select>
           </div>
 
           <div>
             <label className="block text-[11px] opacity-60 uppercase tracking-widest mb-2">Your Pet</label>
             <select className="w-full bg-white/10 border border-white/15 text-white p-3 rounded-xl outline-none focus:border-caramel transition-colors appearance-none">
-              <option className="text-ink">Mochi — Poodle</option>
-              <option className="text-ink">Bong — British Shorthair</option>
+              {MOCK_BOOKING_PETS.map(pet => (
+                <option key={pet.id} value={pet.id} className="text-ink">{pet.label}</option>
+              ))}
               <option className="text-ink">+ Add new pet</option>
             </select>
           </div>

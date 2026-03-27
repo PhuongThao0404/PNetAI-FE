@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
-import { Search, Bell, Star, ShoppingBag, Calendar, Footprints, Grid, Package, Gift, LogOut } from 'lucide-react';
+import { Search, Bell, ShoppingBag, Calendar, Footprints, Grid, Package, LogOut } from 'lucide-react';
 import { useAuth } from '../../features/auth';
 import { motion } from 'framer-motion';
 
@@ -25,10 +25,9 @@ const Navbar: React.FC = () => {
 
   const authLinks = [
     { label: 'My Pets', icon: Footprints, path: '/pets' },
-    { label: 'Appointments', icon: Calendar, path: '/dashboard/appointments' },
+    { label: 'Appointments', icon: Calendar, path: '/appointments' },
     { label: 'Store', icon: ShoppingBag, path: '/shop' },
     { label: 'Orders', icon: Package, path: '/dashboard/orders' },
-    { label: 'Rewards', icon: Gift, path: '/dashboard/rewards' },
   ];
 
   const guestLinks = [
@@ -138,9 +137,6 @@ const Navbar: React.FC = () => {
                 
                 {/* Minimalist Dropdown placeholder */}
                 <div className="hidden sm:flex flex-col">
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-caramel flex items-center gap-1 leading-none mb-1">
-                    <Star className="w-2.5 h-2.5 fill-caramel" /> Silver
-                  </span>
                   <button 
                     onClick={logout}
                     className="text-[11px] text-muted hover:text-red-500 font-bold bg-transparent border-0 p-0 text-left cursor-pointer transition-colors flex items-center gap-1"
