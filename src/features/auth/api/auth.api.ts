@@ -1,9 +1,9 @@
-import type { AuthResponse, LoginRequest } from '../types';
+import type { AuthResponse, LoginRequest, SignUpRequest } from '../types';
 
 const MOCK_USER = {
   id: '1',
   email: 'admin@pnetai.com',
-  name: 'Senior Architect',
+  name: 'ADMIN',
   role: 'admin' as const,
 };
 
@@ -16,6 +16,14 @@ export const login = async (data: LoginRequest): Promise<AuthResponse> => {
   }
   return {
     user: { ...MOCK_USER, email: data.email },
+    token: 'mock-jwt-token-' + Math.random().toString(36).substring(7),
+  };
+};
+
+export const signup = async (data: SignUpRequest): Promise<AuthResponse> => {
+  await delay(1200);
+  return {
+    user: { ...MOCK_USER, email: data.email, name: data.fullName },
     token: 'mock-jwt-token-' + Math.random().toString(36).substring(7),
   };
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useAuth } from './features/auth';
 import { AppRoutes } from './routes/AppRoutes';
 
@@ -25,9 +25,6 @@ function App() {
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-cream font-sans selection:bg-caramel/20">
-      {/* Global Grainy Overlay for "Warm Editorial" texture */}
-      <div className="noise-overlay" />
-
       {/* Actual Application Content */}
       <AppRoutes />
     </div>

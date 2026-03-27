@@ -14,10 +14,6 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
         <div className="absolute top-[-80px] left-[-80px] w-[420px] h-[420px] rounded-full bg-[radial-gradient(ellipse,rgba(196,145,58,0.18)_0%,transparent_70%)] pointer-events-none" />
         <div className="absolute bottom-[-60px] right-[-60px] w-[320px] h-[320px] rounded-full bg-[radial-gradient(ellipse,rgba(126,161,123,0.12)_0%,transparent_70%)] pointer-events-none" />
 
-        {/* Logo */}
-        <a className="font-serif text-[28px] font-bold text-white no-underline tracking-tight z-10" href="/">
-          PNet<span className="text-caramel italic font-normal ml-0.5">AI</span>
-        </a>
 
         {/* Content */}
         <div className="flex-1 flex flex-col justify-center z-10">

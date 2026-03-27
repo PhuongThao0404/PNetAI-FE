@@ -13,3 +13,9 @@ export interface AuthResponse {
 export interface LoginRequest {
   email: string;
 }
+
+export interface SignUpRequest {
+  fullName: string;
+  email: string;
+  password?: string;
+}
