@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, User, Check, AlertCircle, Ticket, Eye, EyeOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthLayout } from './layouts/AuthLayout';
+import { useAuth } from './context/AuthContext';
 
 // Updated Schema
 const signUpSchema = z.object({
@@ -30,8 +31,9 @@ export const SignUpPage: React.FC = () => {
   const [isVerifying, setIsVerifying] = useState(false);
   const [saleStatus, setSaleStatus] = useState<'idle' | 'valid' | 'invalid'>('idle');
   const [saleMessage, setSaleMessage] = useState('');
+  const { signup } = useAuth();
   const navigate = useNavigate();
-  
+
   const {
     register,
     handleSubmit,
@@ -59,13 +61,17 @@ export const SignUpPage: React.FC = () => {
   };
 
   const onSubmit = async (data: SignUpFormValues) => {
-    console.log('Registering:', data);
-    navigate('/otp-verify', { state: { email: data.email } });
+    try {
+      await signup(data.fullName, data.email);
+      navigate('/otp-verify', { state: { email: data.email } });
+    } catch (error) {
+      console.error('Registration failed:', error);
+    }
   };
 
   return (
     <AuthLayout>
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
@@ -132,8 +138,8 @@ export const SignUpPage: React.FC = () => {
                   placeholder="••••••••"
                   className={`w-full p-3.5 border-[1.5px] rounded-2xl bg-white focus:outline-none transition-all font-sans text-sm shadow-sm ${errors.confirmPassword ? 'border-red-500' : 'border-sand'}`}
                 />
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-muted hover:text-brown"
                 >
@@ -206,8 +212,8 @@ export const SignUpPage: React.FC = () => {
                 />
                 <Check className="absolute left-1/2 top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 transition-opacity peer-checked:opacity-100 pointer-events-none" />
               </div>
-              <label 
-                htmlFor="su-terms" 
+              <label
+                htmlFor="su-terms"
                 className="text-[13px] text-muted leading-relaxed cursor-pointer select-none group-hover:text-ink transition-colors"
               >
                 I agree to the <a href="#" className="text-caramel font-semibold hover:underline underline-offset-4">Terms of Service</a> and <a href="#" className="text-caramel font-semibold hover:underline underline-offset-4">Privacy Policy</a> of PNetAI.

@@ -5,4 +5,4 @@ export * from './OtpVerifyPage';
 export * from './ResetPasswordPage';
 export * as authApi from './api/auth.api';
 export * from './types';
-export * from './hooks/useAuth';
+export * from './context/AuthContext';

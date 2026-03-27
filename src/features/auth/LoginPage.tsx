@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Mail, Eye, EyeOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthLayout } from './layouts/AuthLayout';
-import { useAuth } from './hooks/useAuth';
+import { useAuth } from './context/AuthContext';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -31,7 +31,7 @@ export const LoginPage: React.FC = () => {
   const onSubmit = async (data: LoginFormValues) => {
     try {
       await login(data.email);
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       console.error('Login failed', error);
     }
