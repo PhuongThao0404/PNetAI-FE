@@ -9,8 +9,8 @@ export const BookingCard: React.FC = () => {
   const data = activeTab === 'upcoming' ? UPCOMING_BOOKINGS : HISTORY_BOOKINGS;
 
   return (
-    <div className="bg-white rounded-[24px] border border-sand overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ink/5 transition-all h-full">
-      <div className="p-6 px-8 flex items-center justify-between border-b border-sand/50">
+    <div className="bg-white rounded-[24px] border border-sand overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ink/5 transition-all h-[480px] flex flex-col">
+      <div className="p-6 px-8 flex items-center justify-between border-b border-sand/50 flex-shrink-0">
         <h3 className="font-serif text-[18px] font-bold text-ink tracking-tight flex items-center gap-2">
           <CalendarCheck className="w-5 h-5 text-caramel/80" />
           Appointments
@@ -20,7 +20,7 @@ export const BookingCard: React.FC = () => {
         </button>
       </div>
 
-      <div className="p-6 px-8">
+      <div className="p-6 px-8 flex-1 overflow-y-auto custom-scrollbar">
         <div className="flex gap-1.5 mb-6 p-1 bg-warm/30 rounded-full w-fit">
           <button 
             onClick={() => setActiveTab('upcoming')}

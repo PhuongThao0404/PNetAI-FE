@@ -10,15 +10,6 @@ export interface Booking {
   type: 'bath' | 'groom' | 'nail';
 }
 
-export interface Pet {
-  id: string;
-  name: string;
-  breed: string;
-  age: string;
-  gender: 'Female' | 'Male';
-  emoji: string;
-  status: string;
-}
 
 export interface Order {
   id: string;
@@ -31,7 +22,7 @@ export interface Order {
 
 export interface Activity {
   id: string;
-  type: 'spa' | 'shop' | 'pet' | 'reward' | 'social';
+  type: 'spa' | 'shop' | 'pet' | 'social';
   message: string;
   time: string;
   icon: string;

@@ -5,8 +5,8 @@ import { ACTIVITIES } from '../data/mockData';
 
 export const RecentActivity: React.FC = () => {
   return (
-    <div className="bg-white rounded-[24px] border border-sand overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ink/5 transition-all">
-      <div className="p-6 px-8 flex items-center justify-between border-b border-sand/50">
+    <div className="bg-white rounded-[24px] border border-sand overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ink/5 transition-all h-[480px] flex flex-col">
+      <div className="p-6 px-8 flex items-center justify-between border-b border-sand/50 flex-shrink-0">
         <h3 className="font-serif text-[18px] font-bold text-ink tracking-tight flex items-center gap-2">
           <History className="w-5 h-5 text-ink/40" />
           Recent Activity
@@ -16,8 +16,8 @@ export const RecentActivity: React.FC = () => {
         </button>
       </div>
 
-      <div className="p-6 px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1">
+      <div className="p-6 px-8 overflow-y-auto custom-scrollbar flex-1">
+        <div className="grid grid-cols-1 gap-y-1">
           {ACTIVITIES.map((activity) => (
             <div key={activity.id} className="flex gap-4 py-4 group hover:bg-cream/40 px-3 -mx-3 rounded-2xl transition-all">
               <div className={`w-10 h-10 rounded-full flex flex-shrink-0 items-center justify-center text-[15px] ring-4 ring-white shadow-sm transition-transform group-hover:scale-110 ${
